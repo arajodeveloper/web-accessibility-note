@@ -1,19 +1,20 @@
-# Web Accessibility Guideline
+# The Ultimate Web Accessibility Guideline
 
-<h3>I strongly suggest you to read this guideline thoroughly before developing. This will help you implementing web accessbility features without too much effort! </h3>
+### I strongly suggest you to read this guideline thoroughly before developing. This will help you implementing web accessbility features without too much effort!
 
 ---
 
 *Table of Contents*
   
 * Best Practices on HTML Tags
+* ARIA (Accessible Rich Internet Applications) Attributes
 * "Skip to Main Content"
 * onmouseover vs onfocus
 * tabindex
 * onkeydown
 * Color Contrast
 * Form Validation
-* Extras 
+  
 ---
 
 ## Best Practices on HTML Tags 
@@ -190,7 +191,10 @@ Most commonly buttons, links, and form controls require interaction with users. 
 
 5. All form function should be available on keyboards
 ---
+## ARIA (Accessible Rich Internet Applications)
 
+
+---
 ## "Skip to Main Content"
 
 "Skip to Main Content", "Skip Navigation" links are extremely useful for keyboard users. For example, A Web page includes a variety of navigation techniques on each page: a bread crum trail, a search tool, a site map, and a list of related resources. In this case, the first link on the page should be titled **"Skip to Main Content" to activate the link to skip over the navigation tools.** 
@@ -270,4 +274,59 @@ document.querySelector('[tabindex="-1"]').focus()
 </script>
 </body>
 ```
+---
+
+## onkeydown
+
+The ```onkeydown``` event occurs when the user is pressing a key on the keyboard. 
+
+Here is a code snippet on ```onkeydown``` implementation in React JS
+
+```javascript
+const handleIncreaseSpeed = (e) => {
+    //speed increases when users press "space bar" down
+    if (e.key === ' '){
+        console.log('increasing speed')
+        increaseSpeed();
+    }
+}
+
+....
+
+return(
+    <div
+    ...
+    tabIndex='0' 
+    onKeyDown={handleIncreaseSpeed}>
+    ...
+    </div>
+)
+```
+
+Make sure to include ```tabIndex='0'``` to make the element focusable! 
+
+---
+
+## Color Contrast
+
+* Text must have a **minimum** color contrast of over 4.5 to 1 with its background. The ratio of 3 to 1 is acceptable for **large text(14pt bold or 18pt)**. 
+
+* Test your color contrast here: [color contrast checker](https://webaim.org/resources/contrastchecker)
+
+*foreground: text color
+
+---
+
+## Form Validation
+
+* Make sure to include descriptive form labels.
+* Errors associated with fields are helpful for users. 
+* Alert screen reader users. 
+  <br/>
+
+Good example: 
+
+<img src="formvalidation.png"
+alt="Form Validation Example"
+style="float: left; margin-right: 10px;" >
 
