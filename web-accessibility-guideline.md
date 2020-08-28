@@ -6,14 +6,22 @@
 
 *Table of Contents*
   
-* Best Practices on HTML Tags
-* ARIA (Accessible Rich Internet Applications) Attributes
-* "Skip to Main Content"
-* onmouseover vs onfocus
-* tabindex
-* onkeydown
-* Color Contrast
-* Form Validation
+
+  - [Best Practices on HTML Tags](#best-practices-on-html-tags)
+    - [Text Content](#text-content)
+    - [Always Communicate Clearly!](#always-communicate-clearly)
+    - [Page Layouts](#page-layouts)
+    - [Images](#images)
+    - [UI controls](#ui-controls)
+  
+  - [ARIA (Accessible Rich Internet Applications) Attributes](#aria-accessible-rich-internet-applications-attributes)
+  - [Skip to Main Content](#skip-to-main-content)
+  - [onmouseover vs onfocus](#onmouseover-vs-onfocus)
+  - [Tab Index](#tab-index)
+  - [onkeydown](#onkeydown)
+  - [Color Contrast](#color-contrast)
+  - [Form Validation](#form-validation)
+  - [Resources](#resources)
   
 ---
 
@@ -48,7 +56,7 @@ Users can navigate between buttons using the ```tab ``` key and activate their s
     <!--Header Elements-->
 </header>
 ```
-```<header>``` tags is intended to contain navigation elements like logos, links, and other introductory information. 
+```<header>``` tags are intended to contain navigation elements like logos, links, and other introductory information. 
 Using the more semantically accurate elements like ```<header>``` creates a more accessbile web pages for people using technology such as screen readers. 
 
 ---
@@ -186,7 +194,7 @@ Most commonly buttons, links, and form controls require interaction with users. 
    
 3. each ```<label>``` ```for``` attribute value needs to match the form element ```id``` value
    
-4. Keyboard users may use the ```Tab```, ```Shift```, and ```Enter  ```keys to navigate through forms
+4. Keyboard users may use the ```Tab```, ```Shift```, and ```Enter  ```keys to navigate through forms(``` Shift```+```Tab``` for backwards)
    
 
 5. All form function should be available on keyboards
@@ -206,7 +214,7 @@ The screen reader will read
 ```
 Checkbox
 name: "Receive promotional offers"
-state: checked(if it is checked)
+state: checked (if it is checked)
 ```
 
 But for some reasons, you need to use ```<div>``` to make a checkbox functionality. 
@@ -224,7 +232,7 @@ value:"Receive promotional offers"
 ```
 You can see how little context is given for users with the screen reader for the code snippet for the custom checkbox.
 
-So, how can we improve this custom checkbox? Here is another code snippet that uses aria attributes and it functions just like a regular checkbox.
+So, how can we improve this custom checkbox? Here is another code snippet that uses ```aria``` attributes and it functions just like a regular checkbox.
 
 
 ```html
@@ -235,7 +243,7 @@ So, how can we improve this custom checkbox? Here is another code snippet that u
 </div>
 ```
 
-Simply adding ```role=checkbox``` and ```aria-checked```, now my checkbox works just like ```<label>``` 
+By simply adding ```role=checkbox``` and ```aria-checked```, now my checkbox works just like ```<label>``` 
 
 * ARIA can add, modify semantics
 
@@ -269,9 +277,9 @@ By adding ```aria-controls```, button element controls the ```<div id="advanced-
 
   
 ---
-## "Skip to Main Content"
+## Skip to Main Content
 
-"Skip to Main Content", "Skip Navigation" links are extremely useful for keyboard users. For example, A Web page includes a variety of navigation techniques on each page: a bread crum trail, a search tool, a site map, and a list of related resources. In this case, the first link on the page should be titled **"Skip to Main Content" to activate the link to skip over the navigation tools.** 
+"Skip to Main Content", "Skip Navigation" links are extremely useful for keyboard users. For example, A Web page includes a variety of navigation techniques on each page: a bread crumb trail, a search tool, a site map, and a list of related resources. In this case, the first link on the page should be titled **"Skip to Main Content" to activate the link to skip over the navigation tools.** 
 
 e.g. Users can skip navigation link to login. 
 
@@ -293,19 +301,18 @@ return(
 The example above is written in React JS. 
 in regular HTML, you will not need ```onClick```. You can put the ```class``` name that you want the users to go in ```href```. 
 
-```href='javascript:undefined;'``` disables the page to go to the link that has been clicked because user is not trying to go to the different page but different element. It is already supported by ```onClick``` function. 
+```href='javascript:undefined;'``` disables the page to go to the link that has been clicked because the user is not trying to go to the different page but different element. It is supported by ```onClick``` function. 
 
 ---
 
 ## onmouseover vs onfocus 
 
 
-"onmouseover" attribute can be used to activate JavaScript and other forms of activity. Users can activate "onmouseover" by hovering over the assigned "onclick" element, but **it is not operable using the keyboard**.
+"onmouseover" attribute can be used to activate JavaScript and other forms of activity. Users can activate "onmouseover" by hovering over the assigned "onclick" element, but <span style="color:red">**it is not operable using the keyboard**.
 
 "onfocus" attribute equivalent functionality by activating the effect when the interactive element receives **keyboard** focus.
 
 ```javascript
-
 return(
     <input
     ...
@@ -326,12 +333,12 @@ The HTML ```tabindex``` attribute is used to manage keyboard focus. Some semanti
 
 * ```tabindex=-1```
   
-  The element is not in the tab order but it is programmatically focusable 
+  The element is not in the tab order but it is programmatically focusable.
   
   
 * ```tabindex=1+```
   
-  The element is on top of the tab order
+  The element is on top of the tab order.
 
 
 ```tabindex``` example 
@@ -387,7 +394,7 @@ Make sure to include ```tabIndex='0'``` to make the element focusable!
 
 * Test your color contrast here: [color contrast checker](https://webaim.org/resources/contrastchecker)
 
-*foreground: text color
+*foreground color: text color
 
 ---
 
@@ -396,7 +403,7 @@ Make sure to include ```tabIndex='0'``` to make the element focusable!
 * Make sure to include descriptive form labels.
 * Errors associated with fields are helpful for users. 
 * Alert screen reader users. 
-  <br/>
+  
 
 Good example: 
 
