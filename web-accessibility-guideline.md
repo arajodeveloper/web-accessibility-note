@@ -1,6 +1,6 @@
 # The Ultimate Web Accessibility Guideline
 
-### I strongly suggest you to read this guideline thoroughly before developing. This will help you implementing web accessbility features without too much effort!
+#### I strongly suggest you to read this guideline thoroughly before developing. This will help you implementing web accessbility features without too much effort!
 
 ---
 
@@ -191,9 +191,83 @@ Most commonly buttons, links, and form controls require interaction with users. 
 
 5. All form function should be available on keyboards
 ---
-## ARIA (Accessible Rich Internet Applications)
+## ARIA (Accessible Rich Internet Applications) Attributes
+
+* It is always recommended to use built-in semantic HTML elements to save time and extra work. However, when you need to go offroad and build your own control, ARIA can help you add in the semantics your new custom control is missing.
 
 
+```html
+<label>
+    <input type="checkbox">
+    Receive promotional offers
+</label>
+```
+The screen reader will read
+```
+Checkbox
+name: "Receive promotional offers"
+state: checked(if it is checked)
+```
+
+But for some reasons, you need to use ```<div>``` to make a checkbox functionality. 
+
+```html
+<!--custom checkbox-->
+<div class="checkbox checked">
+    Receive promotional offers
+</div>
+```
+The screen reader will read 
+```
+Text
+value:"Receive promotional offers"
+```
+You can see how little context is given for users with the screen reader for the code snippet for the custom checkbox.
+
+So, how can we improve this custom checkbox? Here is another code snippet that uses aria attributes and it functions just like a regular checkbox.
+
+
+```html
+...
+<div tabindex="0" class="checkbox" checked role="checkbox" aria-checked="true">Option 1
+</div>
+<div tabindex="0" class="checkbox" role="checkbox" aria-checked="false">Option 2
+</div>
+```
+
+Simply adding ```role=checkbox``` and ```aria-checked```, now my checkbox works just like ```<label>``` 
+
+* ARIA can add, modify semantics
+
+* ARIA can add extra labels and descriptions
+  
+```html
+<button class="glyph"
+aria-label="Filter"
+>
+    <div class="menu-glyph">
+    </div>
+</button>
+```
+* ARIA can also express relationships between different (or complex) elelements
+
+```html
+<button aria-expanded="false"
+aria-controls="advanced-settings">
+    <h2>Advanced Settings</h2>
+</button>
+<div id="advanced-settings">
+    <label>
+        <input type="checkbox">
+            Offer to translate content
+    </label>
+</div>
+```
+By adding ```aria-controls```, button element controls the ```<div id="advanced-settings">```element 
+
+* ARIA can also give live updates using ```role="alert"```
+
+  
 ---
 ## "Skip to Main Content"
 
@@ -329,4 +403,16 @@ Good example:
 <img src="formvalidation.png"
 alt="Form Validation Example"
 style="float: left; margin-right: 10px;" >
+
+---
+
+## Resources
+
+* [General Usage of HTML semantics](https://developer.mozilla.org/en-US/docs/Learn/Tools_and_testing/Cross_browser_testing/Accessibility#Using_native_keyboard_accessibility)
+* [onmouseover vs onfocus](https://accessibility.iu.edu/creating-content/web-content/keyboard.html#:~:text=Users%20can%20activate%20%E2%80%9Conmouseover%E2%80%9D%20by,interactive%20element%20receives%20keyboard%20focus.)
+* [4 Web Accessibility Best Practices](https://blog.prototypr.io/4-web-accessibility-best-practices-a0e957948bc5)
+* [Using the tabindex attribute](https://developer.paciellogroup.com/blog/2014/08/using-the-tabindex-attribute/)
+* [Controlling focus with tabindex](youtube.com/watch?v=Pe0Ce1WtnUM)
+* [Intro to ARIA](https://www.youtube.com/watch?v=g9Qff0b-lHk&t=8s)
+* EVT Codebase
 
