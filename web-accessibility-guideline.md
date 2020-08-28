@@ -142,7 +142,7 @@ Here is a good example of page layouts.
 
 All image elements must be provided with an ```alt``` attribute to ensure that a text description is available to be announced by screen readers.
 
-<span style="color:red">! it should not be containing 'image of' or 'picture of' unless the attached image is an image of the object.
+*<span style="color:red">! it should not be containing 'image of' or 'picture of' unless the attached image is an image of the object.*
 
 ```html
 <img src="traffic_lights.png" alt="traffic light with red stop signal">
