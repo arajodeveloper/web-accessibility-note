@@ -194,8 +194,8 @@ Most commonly buttons, links, and form controls require interaction with users. 
    
 3. each ```<label>``` ```for``` attribute value needs to match the form element ```id``` value
    
-4. Keyboard users may use the ```Tab```, ```Shift```, and ```Enter  ```keys to navigate through forms(```Shift```+```Tab``` for backwards)
-   
+4. Keyboard users may use the ```Tab```, ```Shift```, and ```Enter``` keys to navigate through forms(```Shift```+```Tab``` for backwards)
+  
 
 5. All form function should be available on keyboards
 ---
